@@ -13,4 +13,162 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font), sans-serif;
+  font-variation-settings: 'wght' var(--main-weight);
+  padding: 100px 0;
+  background-color: var(--background-color);
+  color: var(--main-color);
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  inline-size: var(--main-width);
+  block-size: 30vh;
+  margin: 0 auto 100px;
+  outline: solid 2px var(--main-color);
+}
+
+h1 {
+  font-family: var(--accent-font), monospace;
+  font-size: 65px;
+}
+
+.header_text {
+  font-family: var(--accent-font), monospace;
+  font-size: 23px;
+  text-transform: uppercase;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin: auto;
+  inline-size: var(--main-width);
+  line-height: 21px;
+}
+
+.card {
+  outline: solid 2px var(--main-color);
+}
+
+.card_title {
+  padding: 10px 5px;
+}
+
+.card_title_text {
+  font-size: 18px;
+  font-variation-settings: 'wght' var(--h2-weight);
+}
+
+.image_wrapper {
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  outline: solid 2px var(--main-color);
+}
+
+.watermark {
+  font-family: var(--accent-font), monospace;
+  font-size: 14px;
+  color: var(--watermark-color);
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  mix-blend-mode: hard-light;
+  text-shadow: 
+    -1px 0 var(--watermark-bgd-color),
+    0 1px var(--watermark-bgd-color),
+    1px 0 var(--watermark-bgd-color), 
+    0 -1px var(--watermark-bgd-color);
+}
+
+@supports ((text-stroke: 1px #000000) or (-webkit-text-stroke: 1px #000000)) {
+  .watermark {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--watermark-bgd-color);
+    text-stroke: 1px var(--watermark-bgd-color);
+  }
+}
+
+.card_content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.card__like-button {
+  background-color: transparent;
+  font-family: var(--accent-font), monospace;
+  align-self: end;
+  display: flex;
+  /* align-items: center; */
+  gap: 19px;
+  border: none;
+}
+
+.button__text {
+  border: solid 2px var(--main-color);
+  inline-size: 130px;
+  block-size: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.save_button {
+  background-color: transparent;
+  border: none;
+  outline: solid 2px var(--main-color);
+  font-family: var(--accent-font), monospace;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  block-size: 55px;
+  margin: auto;
+}
+
+dialog {
+  padding: 30px;
+  background-color: var(--background-color);
+  color: var(--main-color);
+  min-inline-size: 341px;
+  max-inline-size: 357px;
+}
+
+dialog[open] .dialog_content {
+  font-family: var(--accent-font), monospace;
+  font-size: 14px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.dialog_btn {
+  background-color: transparent;
+  border: solid 2px var(--main-color);
+  inline-size: 100%;
+  block-size: 38px;
+}
+
+dialog::backdrop {
+  background-image: linear-gradient(E7E7E7, 1A1A1A);
+}
+
+@media (width <= 375px) {
+  h1 {
+    font-size: 49px;
+  }
+
+  .header_text {
+    font-size: 14px;
+  }
 }
