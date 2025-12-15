@@ -148,58 +148,68 @@ h1 {
   gap: 25px;
 }
 
-.card__like-button {
-  background-color: transparent;
-  font-family: var(--accent-font), monospace;
+.card_button_wrapper {
   align-self: end;
   display: flex;
-  /* align-items: center; */
   gap: 19px;
-  border: none;
+  align-items: center;
+}
+
+.card__icon-button {
+  background-color: transparent;
+  transition: outline 0.3s ease;
+}
+
+.card__icon-button:focus {
   outline: none;
 }
 
-.button__text {
+.card__icon-button:focus-visible {
+  outline: solid 2px var(--main-color);
+}
+
+.card__like-button {
+  /* background-color: white; */
+  font-family: var(--accent-font), monospace;
+  outline: none;
   border: solid 2px var(--main-color);
   inline-size: 130px;
   block-size: 38px;
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
-  position: relative;
+  background-color: transparent;
+}
+
+.button__text {
   color: white;
-  background-color: white;
   mix-blend-mode: difference;
 }
 
-
-.card__like-button:focus .button__text {
+.card__like-button:focus .card__like-button {
   box-shadow: 2px 2px 0 var(--main-color);
   transition: box-shadow 0.3s ease;
 }
 
-.button__text::before {
+.card__like-button::before {
   content: "";
   position: absolute;
   z-index: -1;
-  top: 0;
   left: 0;
   inline-size: 130px;
   block-size: 38px;
-  /* mix-blend-mode: normal; */
   background-color: black;
   transform: scaleX(0);
   transform-origin: 0 center;
   transition: transform 0.5s ease-in-out;
 }
 
-
-.card__like-button:hover .button__text::before {
+.card__like-button:hover .card__like-button::before {
   transform: scaleX(1);
 }
 
 .save_button {
-  background-color: var(--background-color);
   outline: none;
   border: solid 2px var(--main-color);
   font-family: var(--accent-font), monospace;
@@ -208,11 +218,32 @@ h1 {
   gap: 8px;
   block-size: 55px;
   margin: auto;
+  position: relative;
+  color: white;
+  background-color: white;
+  mix-blend-mode: difference;
 }
 
 .save_button:focus {
   box-shadow: 2px 2px 0 var(--main-color);
   transition: box-shadow 0.3s ease;
+}
+
+.save_button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  inline-size: 55px;
+  block-size: 55px;
+  background-color: black;
+  transform: scaleX(0);
+  transform-origin: 0 center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.save_button:hover .save_button::before {
+  transform: scaleX(1);
 }
 
 dialog {
