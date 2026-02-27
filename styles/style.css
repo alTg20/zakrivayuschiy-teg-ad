@@ -187,7 +187,12 @@ h1 {
   mix-blend-mode: difference;
 }
 
-.card__like-button:focus .card__like-button {
+/* .card__like-button:focus .card__like-button {
+  box-shadow: 2px 2px 0 var(--main-color);
+  transition: box-shadow 0.3s ease;
+} */
+/* Works! */
+.card__like-button:focus {
   box-shadow: 2px 2px 0 var(--main-color);
   transition: box-shadow 0.3s ease;
 }

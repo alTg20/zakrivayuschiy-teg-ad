@@ -233,16 +233,17 @@
           <use href="#floppy">
         </svg>
         <span>Сохранить на память</span>
-    </button>
-    <dialog id="dialog-id">
-      <div class="dialog_content">
-        <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
-          <use href="#floppy">
-        </svg>
-        <span>Вставьте дискету, чтобы продолжить</span>
-      </div>
-      <button class="dialog_btn">ОК</button>
-    </dialog>
+      </button>
+      <dialog id="dialog-id">
+        <div class="dialog_content">
+          <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
+            <use href="#floppy">
+          </svg>
+          <span>Вставьте дискету, чтобы продолжить</span>
+        </div>
+        <!-- Fixed closing! -->
+        <button class="dialog_btn" type="button" onclick="window['dialog-id'].close()">ОК</button>
+      </dialog>
     </main>
     <script src="./scripts/like.js"></script>
   </body>
