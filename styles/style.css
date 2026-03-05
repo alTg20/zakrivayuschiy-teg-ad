@@ -18,7 +18,8 @@
   padding: 100px 0;
   color: var(--main-color);
   box-sizing: border-box;
-  background-image: repeating-linear-gradient(
+  background-image:
+    repeating-linear-gradient(
       to right,
       #d3d3d3,
       #d3d3d3 2px,
@@ -42,7 +43,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  inline-size: var(--main-width);
+  /* inline-size: var(--main-width); */
+  inline-size: clamp(375px, 700px, var(--main-width));
   block-size: 30vh;
   margin: 0 auto 100px;
   outline: solid 2px var(--main-color);
@@ -51,7 +53,8 @@
 
 h1 {
   font-family: var(--accent-font), monospace;
-  font-size: 65px;
+  /* font-size: 65px; */
+  font-size: clamp(49px, 65px, 100%);
 }
 
 .header_text {
@@ -244,6 +247,10 @@ dialog::backdrop {
 }
 
 @media (width <= 375px) {
+  .header {
+    inline-size: 100vw;
+  }
+
   h1 {
     font-size: 49px;
   }
