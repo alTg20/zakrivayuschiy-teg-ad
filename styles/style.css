@@ -13,7 +13,9 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  /* Основной шрифт */
   font-family: var(--main-font), sans-serif;
+  /* Основной вес шрифта */
   font-variation-settings: "wght" var(--main-weight);
   padding: 100px 0;
   color: var(--main-color);
@@ -51,6 +53,7 @@
   background-color: var(--background-color);
 }
 
+/* Другие резиновые элементы — логотип, заголовок, отступы в шапке. */
 h1 {
   font-family: var(--accent-font), monospace;
   /* font-size: 65px; */
@@ -68,7 +71,8 @@ h1 {
   flex-direction: column;
   gap: 50px;
   margin: auto;
-  inline-size: var(--main-width);
+  /* inline-size: var(--main-width); */
+  inline-size: clamp(375px, 700px, var(--main-width));
   line-height: 21px;
 }
 
@@ -94,6 +98,8 @@ h1 {
   width: 100%;
   outline: solid 2px var(--main-color);
 }
+
+/* Шаг 6. Фильтры */
 
 .filter-saturation {
   filter: saturate(20%);
@@ -131,16 +137,16 @@ h1 {
   top: 25px;
   right: 25px;
   mix-blend-mode: hard-light;
-  text-shadow: -1px 0 var(--watermark-bgd-color),
-    0 1px var(--watermark-bgd-color), 1px 0 var(--watermark-bgd-color),
-    0 -1px var(--watermark-bgd-color);
+  text-shadow: -1px 0 var(--watermark-bg-color),
+    0 1px var(--watermark-bg-color), 1px 0 var(--watermark-bg-color),
+    0 -1px var(--watermark-bg-color);
 }
 
 @supports ((text-stroke: 1px #000000) or (-webkit-text-stroke: 1px #000000)) {
   .watermark {
     text-shadow: none;
-    -webkit-text-stroke: 1px var(--watermark-bgd-color);
-    text-stroke: 1px var(--watermark-bgd-color);
+    -webkit-text-stroke: 1px var(--watermark-bg-color);
+    text-stroke: 1px var(--watermark-bg-color);
   }
 }
 
@@ -158,6 +164,8 @@ h1 {
   align-items: center;
 }
 
+/* card__icon-button — для кнопки, оборачивающей иконку */
+
 .card__icon-button {
   background-color: transparent;
   transition: outline 0.3s ease;
@@ -171,6 +179,7 @@ h1 {
   outline: solid 2px var(--main-color);
 }
 
+/* card__like-button — для кнопки Like рядом с иконкой */
 .card__like-button {
   /* background-color: white; */
   font-family: var(--accent-font), monospace;
@@ -183,38 +192,6 @@ h1 {
   justify-content: center;
   align-items: center;
   background-color: transparent;
-}
-
-.button__text {
-  color: white;
-  mix-blend-mode: difference;
-}
-
-/* .card__like-button:focus .card__like-button {
-  box-shadow: 2px 2px 0 var(--main-color);
-  transition: box-shadow 0.3s ease;
-} */
-/* Works! */
-.card__like-button:focus {
-  box-shadow: 2px 2px 0 var(--main-color);
-  transition: box-shadow 0.3s ease;
-}
-
-.card__like-button::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 0;
-  inline-size: 130px;
-  block-size: 38px;
-  background-color: black;
-  transform: scaleX(0);
-  transform-origin: 0 center;
-  transition: transform 0.5s ease-in-out;
-}
-
-.card__like-button:hover .card__like-button::before {
-  transform: scaleX(1);
 }
 
 .save_button {
@@ -232,9 +209,90 @@ h1 {
   mix-blend-mode: difference;
 }
 
+/* Шаг 7. Эффекты кнопок */
+
+/* Эффекты на кнопках при фокусе и ховере имеют разную плавность. Кроме того,
+эффекты кнопок «Like» и «Сохранить на память» отличается от эффекта кнопки,
+оборачивающей сердечко. */
+
+/* .card__like-button:focus .card__like-button {
+  box-shadow: 2px 2px 0 var(--main-color);
+  transition: box-shadow 0.3s ease;
+} */
+/* Works! */
+.card__like-button:focus {
+  box-shadow: 2px 2px 0 var(--main-color);
+  transition: box-shadow 0.3s ease;
+}
+
 .save_button:focus {
   box-shadow: 2px 2px 0 var(--main-color);
   transition: box-shadow 0.3s ease;
+}
+
+/*
+По наведению на кнопку должен плавно слева направо появляться псевдоэлемент.
+Добиться этого можно двумя путями:
+- через scale от 0 до 1;
+- через translate от -100% по оси X до 0. В этом случае кнопке придётся задать
+  overflow.
+*/
+
+/* button__text — для обозначения текстового элемента внутри кнопки */
+.button__text {
+  color: white;
+  mix-blend-mode: difference;
+}
+
+/* Прошлое решение */
+/* .button__text {
+  border: solid 2px var(--main-color);
+  inline-size: 130px;
+  block-size: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: white;
+  background-color: white;
+  mix-blend-mode: difference;
+} */
+/* .button__text::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  inline-size: 130px;
+  block-size: 38px; */
+  /* mix-blend-mode: normal; */
+  /* background-color: black;
+  transform: scaleX(0);
+  transform-origin: 0 center;
+  transition: transform 0.5s ease-in-out;
+} */
+/* .card__like-button:hover .button__text::before {
+  transform: scaleX(1);
+} */
+
+.card__like-button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  inline-size: 130px;
+  block-size: 38px;
+  background-color: black;
+  /* transform: scaleX(0); */
+  /* transform-origin: 0 center; */
+  transition: transform 0.5s ease-in-out;
+
+  transform: translate(-100%);
+}
+
+.card__like-button:hover .card__like-button::before {
+  /* transform: scaleX(1); */
+  transform: translate(0);
 }
 
 .save_button::before {
@@ -254,6 +312,9 @@ h1 {
   transform: scaleX(1);
 }
 
+
+/* Кнопка сохранения */
+
 dialog {
   padding: 30px;
   background-color: var(--background-color);
@@ -262,6 +323,13 @@ dialog {
   max-inline-size: 357px;
 }
 
+/*
+Чтобы сверстать две колонки внутри модального окна, вы, скорее всего,
+захотите изменить в нём значение display. Воздействие на display повлияет на
+возможности скрывать и показывать модальное окно, ведь по умолчанию у элемента
+dialog предустановленное значение display. Чтобы избежать этой проблемы, меняйте
+свойство display у диалога только в состоянии opened.
+*/
 dialog[open] .dialog_content {
   font-family: var(--accent-font), monospace;
   font-size: 14px;
@@ -269,6 +337,8 @@ dialog[open] .dialog_content {
   gap: 20px;
   align-items: center;
   margin-bottom: 30px;
+
+  text-transform: uppercase;
 }
 
 .dialog_btn {
@@ -278,6 +348,8 @@ dialog[open] .dialog_content {
   block-size: 38px;
 }
 
+/* Не забудьте также стилизовать задний слой у открытого модального окна.
+Для этого придуман псевдоэлемент backdrop. */
 dialog::backdrop {
   background-image: linear-gradient(E7E7E7, 1A1A1A);
 }
@@ -293,5 +365,9 @@ dialog::backdrop {
 
   .header_text {
     font-size: 14px;
+  }
+
+  .content {
+    inline-size: 100vw;
   }
 }

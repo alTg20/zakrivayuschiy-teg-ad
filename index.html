@@ -25,6 +25,7 @@
         <header class="card_title">
           <h2 class="card_title_text">Фритрек и нулевой спринт: Подготовка к работе</h2>
         </header>
+        <!-- Создайте обёртку для изображения. В этом контейнере будет лежать изображение и текстовый элемент. -->
         <div class="image_wrapper">
           <img src="../images/image.png" class="image">
           <p class="watermark">&lt;/HTML&gt;</p>
@@ -36,10 +37,16 @@
           </p>
           <p>Место для ваших воспоминаний о начале обучения.</p>
           <div class="card_button_wrapper">
+            <!-- card__icon-button — для кнопки, оборачивающей иконку -->
             <button class="card__icon-button">
+              <!-- like-icon — для svg-иконки анимированного сердца -->
+              <!-- is-liked — для обозначения состояния лайкнутой иконки в виде сердца -->
               <img src="../images/heart.svg" class="like-icon">
             </button>
+            <!-- card__like-button — для кнопки Like рядом с иконкой -->
             <button class="card__like-button">
+              <!-- Содержимое кнопок «Like» и «Сохранить на память» поместите в <span> с отдельным классом button__text. -->
+              <!-- button__text — для обозначения текстового элемента внутри кнопки -->
               <span class="button__text">Like</span>
             </button>
           </div>
@@ -232,7 +239,8 @@
         <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
           <use href="#floppy">
         </svg>
-        <span>Сохранить на память</span>
+        <!-- Содержимое кнопок «Like» и «Сохранить на память» поместите в <span> с отдельным классом button__text. -->
+        <span class="button__text">Сохранить на память</span>
       </button>
       <dialog id="dialog-id">
         <div class="dialog_content">
