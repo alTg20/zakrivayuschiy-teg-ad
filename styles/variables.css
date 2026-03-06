@@ -13,4 +13,6 @@
     --watermark-color: rgb(0 0 0 / 0.5);
     --watermark-bg-color: rgb(255 255 255 / 0.5);
     /* --background-image: ; */
+    --contour-color: black;
+    --animation-fill-color: #FF0000; 
 }

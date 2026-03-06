@@ -172,15 +172,94 @@ h1 {
   inline-size: 38px;
   background-color: transparent;
   transition: outline 0.3s ease;
+
+  padding: 0;
 }
 
 /* А высота блока должна быть такой же, как у кнопки справа.
 Проследите за размерами. */
 .like-icon {
-  width: 30px;
-  height: 30px;
-  /* margin: 0; */
+  /* transform-origin: center; */
+  /* position: relative; */
 }
+
+.sparks {
+  opacity: 0;
+}
+
+.core {
+  fill: white;
+  transition: fill 0.3s 0.05s;
+}
+
+.main-body {
+  fill: white;
+  transition: fill 0.3s;
+}
+
+.card__icon-button:hover .core {
+  fill: var(--contour-color);
+  transition: fill 0.3s;
+}
+
+.card__icon-button:hover .main-body {
+  fill: var(--contour-color);
+  transition: fill 0.3s 0.05s;
+}
+
+.card__icon-button:active .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s;
+}
+
+.card__icon-button:active .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s 0.06s;
+}
+
+.like-icon.is-liked .heart {
+  animation-delay: 0.1s;
+  animation: heart 0.3s ease-in;
+}
+
+.like-icon.is-liked .sparks {
+  animation-delay: 0.3s;
+  animation: sparks 0.3s ease-in;
+}
+
+@keyframes heart {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.25);
+  }
+}
+
+@keyframes sparks {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 
 .card__icon-button:focus {
   outline: none;
