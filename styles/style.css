@@ -174,6 +174,8 @@ h1 {
   transition: outline 0.3s ease;
 }
 
+/* А высота блока должна быть такой же, как у кнопки справа.
+Проследите за размерами. */
 .like-icon {
   width: 30px;
   height: 30px;
@@ -190,18 +192,18 @@ h1 {
 
 /* card__like-button — для кнопки Like рядом с иконкой */
 .card__like-button {
-  background-color: white;
   font-family: var(--accent-font), monospace;
   outline: none;
   border: solid 2px var(--main-color);
   inline-size: 130px;
   block-size: 38px;
   display: flex;
-  position: relative;
-  z-index: 0;
   justify-content: center;
   align-items: center;
-  /* background-color: transparent; */
+
+  background-color: white;
+  position: relative;
+  z-index: 0;
 }
 
 .save_button {
@@ -213,11 +215,10 @@ h1 {
   gap: 8px;
   block-size: 55px;
   margin: auto;
+
   position: relative;
-  /* z-index: 0; */
-  /* color: white; */
+  z-index: 0;
   background-color: white;
-  /* mix-blend-mode: difference; */
 }
 
 /* Шаг 7. Эффекты кнопок */
@@ -226,10 +227,6 @@ h1 {
 эффекты кнопок «Like» и «Сохранить на память» отличается от эффекта кнопки,
 оборачивающей сердечко. */
 
-/* .card__like-button:focus .card__like-button {
-  box-shadow: 2px 2px 0 var(--main-color);
-  transition: box-shadow 0.3s ease;
-} */
 /* Works! */
 .card__like-button:focus {
   box-shadow: 2px 2px 0 var(--main-color);
@@ -250,123 +247,37 @@ h1 {
 */
 
 /* button__text — для обозначения текстового элемента внутри кнопки */
-/* .button__text {
-  color: white;
-  mix-blend-mode: difference;
-} */
-
-/* Прошлое решение */
-/* .button__text {
-  border: solid 2px var(--main-color);
-  inline-size: 130px;
-  block-size: 38px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  color: white;
-  background-color: white;
-  mix-blend-mode: difference;
-}
-.button__text::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  inline-size: 130px;
-  block-size: 38px;
-  
-  mix-blend-mode: normal;
-
-  background-color: black;
-  transform: scaleX(0);
-  transform-origin: 0 center;
-  transition: transform 0.5s ease-in-out;
-}
-.card__like-button:hover .button__text::before {
-  transform: scaleX(1);
-} */
-
-/* .card__like-button::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 0;
-  inline-size: 130px;
-  block-size: 38px;
-  background-color: black;
-  transform: scaleX(0);
-  transform-origin: 0 center;
-  transition: transform 0.5s ease-in-out;
-}
-.card__like-button:hover .card__like-button::before {
-  transform: scaleX(1);
-}
-.save_button::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 0;
-  inline-size: 55px;
-  block-size: 55px;
-  background-color: black;
-  transform: scaleX(0);
-  transform-origin: 0 center;
-  transition: transform 0.5s ease-in-out;
-}
-.save_button:hover .save_button::before {
-  transform: scaleX(1);
-} */
-
 .button__text {
   mix-blend-mode: difference;
-  
   position: relative;
   z-index: 2;
   color: white;
 }
-/* .button__text::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  inline-size: 130px;
-  block-size: 38px;
-  
-  mix-blend-mode: normal;
 
-  background-color: black;
-  transform: scaleX(0);
-  transform-origin: 0 center;
-  transition: transform 0.5s ease-in-out;
-} */
 .button_pseudo::before {
   content: "";
   position: absolute;
   z-index: 1;
-  /* left: 0; */
-  /* top: 0; */
   inset: 0;
-  /* 130px */
-  /* inline-size: 135px;   */
-  /* 38px */
-  /* block-size: 45px; */
-  
-  /* mix-blend-mode: difference; */
-
   background-color: black;
   transform: scaleX(0);
   transform-origin: 0 center;
   transition: transform 0.5s ease-in-out;
 }
+
 .card__like-button:hover .button_pseudo::before {
   transform: scaleX(1);
 }
-.save_button:hover .button__text::before {
-  /* inline-size: 345px; */
-  /* block-size: 55px; */
+
+.save_icon {
+  /* mix-blend-mode: difference; */
+  /* color: white; */
+  /* fill: white; */
+  position: relative;
+  z-index: 2;
+}
+
+.save_button:hover .button_pseudo::before {
   transform: scaleX(1);
 }
 
