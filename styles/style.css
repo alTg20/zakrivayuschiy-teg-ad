@@ -369,6 +369,8 @@ dialog {
   color: var(--main-color);
   min-inline-size: 341px;
   max-inline-size: 357px;
+  position: fixed;
+  inset: 0;
 }
 
 /*
